@@ -32,19 +32,18 @@
                 this.name = name;
                 this.year = year;
             }
-
-			show = () => {
-				console.log(this.name);
-				console.log(this.year);
-			}
+		show = () => {
+			console.log(this.name);
+			console.log(this.year);
+		}
         }
 
         const myCar1=new Car("소나타", 2021);
         console.log(myCar1.name);
         console.log(myCar1.year);
 
-		const myCar2=new Car("그랜져", 2020);
-		myCar2.show;
+	const myCar2=new Car("그랜져", 2020);
+	myCar2.show;
 
         //구조분해할당(Destructuring Assingment)
         let c,d;
@@ -52,11 +51,11 @@
         console.log(c);
         console.log(d);
 
-		let aa, bb, cc;
-		[aa, bb, cc] = [100, 200, 300];
-		console.log("aa : " + aa);
-		console.log("bb : " + bb);
-		console.log("cc : " + cc);
+	let aa, bb, cc;
+	[aa, bb, cc] = [100, 200, 300];
+	console.log("aa : " + aa);
+	console.log("bb : " + bb);
+	console.log("cc : " + cc);
 
         [c, d, ...rest] = [10, 20, 30, 40, 50]; //배열구조분해, spread syntax 같이 사용
         console.log(rest);
