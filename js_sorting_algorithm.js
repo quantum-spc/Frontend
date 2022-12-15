@@ -1,4 +1,4 @@
-1. 단순정렬
+// 1. 단순정렬
 function simpleSort(arr) {
  var t;
  for (var i=0; i<arr.length-1; i++) {
@@ -14,7 +14,7 @@ function simpleSort(arr) {
 }
 console.log(simpleSort(new Array(3,1,4,2))); // 출력 1234
 
-2. 버블정렬 
+// 2. 버블정렬 
 function bubbleSort(arr) {
  var t;
  for (var i=0; i<arr.length; i++) {
@@ -30,7 +30,7 @@ function bubbleSort(arr) {
 }
 console.log(bubbleSort(new Array(3,1,4,2))); // 출력 1234
 
-3. 삽입정렬
+// 3. 삽입정렬
 function insertionSort(arr) {
  var t;
  for (var i=1; i<arr.length; i++) {
@@ -48,7 +48,7 @@ function insertionSort(arr) {
 }
 console.log(insertionSort(new Array(2,6,1,9,5))); // 출력 12569
 
-4. 퀵정렬
+// 4. 퀵정렬
 function quickSort(arr) {
  if (arr.length < 2) {
   return arr;
