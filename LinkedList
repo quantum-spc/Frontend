@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		
+			/* 노드 (기본형) */
+			function Node(value) {
+				this.value = value;
+				this.next;
+			}
+			
+			/* 연결리스트 (큐, 스텍 가능) */
+			function LinkedList(value) {
+				this.root = null;
+				this.length = 0;
+				
+				this.Enqueue = function(value) {
+					var index = this.root;
+					while(true) {
+						if (this.root == null) {
+							this.root = new Node(value);
+							this.length++;
+							return;
+						} else if (index.next == null) {
+							index.next = new Node(value);
+							this.length++;
+							return;
+						} else {
+							index = index.next;
+						}
+					}
+				}
+				this.Push = this.Enqueue;
+				
+				this.Dequeue = function() {
+					var deleteValue;
+					if (this.root == null) {
+						return null;
+					} else if (this.root.next == null) {
+						deleteValue = this.root.value;
+						this.root = null;
+						this.length--;
+					} else {
+						deleteValue = this.root.value;
+						this.root = this.root.next;
+						this.length--;
+					}
+					return deleteValue;
+				}
+				this.Pop = function() {
+					var deleteValue;
+					if (this.root == null) {
+						return null;
+					} else {
+						var index = this.root;
+						while(true) {
+							if (this.root.next == null) {
+								deleteValue = this.root.value;
+								this.root = null;
+								this.length--;
+								break;
+							} else if (index.next.next == null) {
+								deleteValue = index.next.value;
+								index.next = null;
+								this.length--;
+								break;
+							} else {
+								index = index.next;
+							}
+						}
+					}
+					return deleteValue;
+				}
+				this.Set = function(search, value) {
+					if (isNaN(search)) {
+						return false;
+					} else if (search < 0 || search > this.length-1) {
+						return false;
+					} else {
+						if (search == 0) {
+							this.root.value = value;
+						} else if (search > 0) {
+							var index = this.root;
+							for (var i=0 ; i<search ; i++) {
+								index = index.next;
+							}
+							index.value = value;
+						}
+						return true;
+					}
+				}
+				this.Get = function(search) {
+					var result = null;
+					if (isNaN(search)) {
+						return false;
+					} else if (search < 0 || search > this.length-1) {
+						result = null;
+					} else {
+						if (search == 0) {
+							result = this.root.value;
+						} else if (search > 0) {
+							var index = this.root;
+							for (var i=0 ; i<search ; i++) {
+								index = index.next;
+							}
+							result = index.value;
+						}
+					}
+					return result;
+				}
+				
+				this.ShowLength = function() {
+					document.write("길이 : ", this.length, "<br/>")
+				}
+				this.ShowAllData = function() {
+					this.ShowLength();
+					var index = this.root;
+					var length = 1;
+					while(true) {
+						if (index == null) {
+							return;
+						} else {
+							document.write(index.value);
+							if (length < this.length) {
+								document.write(" > ");
+							} else {
+								document.write("<br/>");
+							}
+							index = index.next;
+							length++;
+						}
+					}
+				}
+			}
+			var list = new LinkedList();
+			list.Enqueue("사과");
+			list.Enqueue("바나나");
+			list.Push("딸기");
+			list.Enqueue(40);
+			list.Enqueue(50);
+ 			list.ShowAllData();
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			document.write(list.Pop(), "<br/>");
+			list.ShowAllData();
+ 			list.Enqueue(10);
+			list.Enqueue(20);
+			list.Enqueue(30);
+			list.ShowAllData();
+/* 			document.write(list.Set("ab", 500), "<br/>");
+			document.write(list.Set(-1, 500), "<br/>");
+			document.write(list.Set(0, 100), "<br/>");
+			document.write(list.Set(1, 200), "<br/>");
+			document.write(list.Set(2, 300), "<br/>");
+			document.write(list.Set(3, 400), "<br/>");
+			document.write(list.Set(4, 500), "<br/>");
+			document.write(list.Set(5, 500), "<br/>");
+			
+			document.write(list.Get(0), "<br/>");
+			document.write(list.Get(1), "<br/>");
+			document.write(list.Get(2), "<br/>");
+			document.write(list.Get(3), "<br/>");
+			document.write(list.Get(4), "<br/>");
+			document.write(list.Get(5), "<br/>");
+			document.write(list.Get(6), "<br/>"); */
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>
